@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rechef</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="logout">Logout</string>
+    <string name="Splash_1">Welcome to\nReChef!</string>
+    <string name="rechef_logo">Rechef Logo</string>
+    <string name="Splash_2">Where Inspiration Meets Ingredients!</string>
+    <string name="HI">Hey, \nWelcome \nBack</string>
+</resources>
