@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.bangkit.rechef" />
+                  <option name="mobileSdkAppId" value="1:269477327885:android:d64154594fcecc4879d144" />
+                  <option name="projectId" value="rechef-fdf5c" />
+                  <option name="projectNumber" value="269477327885" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
