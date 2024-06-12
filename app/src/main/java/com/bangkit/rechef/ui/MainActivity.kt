@@ -7,12 +7,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.bangkit.rechef.R
+import com.bangkit.rechef.fragment.BookmarkFragment
+import com.bangkit.rechef.fragment.HomeFragment
+import com.bangkit.rechef.fragment.ScanFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var logoutButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +31,35 @@ class MainActivity : AppCompatActivity() {
         logoutButton.setOnClickListener {
             logout()
         }
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    val fragment = HomeFragment()
+                    openFragment(fragment)
+                    true
+                }
+                R.id.nav_scan -> {
+                    val fragment = ScanFragment()
+                    openFragment(fragment)
+                    true
+                }
+                R.id.nav_bookmark -> {
+                    val fragment = BookmarkFragment()
+                    openFragment(fragment)
+                    true
+                }
+                else -> false
+            }
+        }
+        // Set default selection
+        if (savedInstanceState == null) {
+            bottomNavigationView.selectedItemId = R.id.nav_home
+            openFragment(HomeFragment())
+        }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,4 +92,33 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun openFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val fragmentManager = supportFragmentManager
+        if (fragmentManager.backStackEntryCount > 1) {
+            fragmentManager.popBackStack()
+            val currentFragment = fragmentManager.fragments.last()
+            updateBottomNavigation(currentFragment)
+        } else {
+            finish()
+        }
+    }
+
+    private fun updateBottomNavigation(fragment: Fragment) {
+        when (fragment) {
+            is HomeFragment -> bottomNavigationView.selectedItemId = R.id.nav_home
+            is ScanFragment -> bottomNavigationView.selectedItemId = R.id.nav_scan
+            is BookmarkFragment -> bottomNavigationView.selectedItemId = R.id.nav_bookmark
+        }
+    }
+
+
 }
