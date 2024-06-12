@@ -3,15 +3,9 @@ package com.bangkit.rechef.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.bangkit.rechef.R
-import com.bangkit.rechef.fragment.BookmarkFragment
-import com.bangkit.rechef.fragment.HomeFragment
-import com.bangkit.rechef.fragment.ScanFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -34,47 +28,35 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    val fragment = HomeFragment()
-                    openFragment(fragment)
-                    true
-                }
-                R.id.nav_scan -> {
-                    val fragment = ScanFragment()
-                    openFragment(fragment)
-                    true
-                }
-                R.id.nav_bookmark -> {
-                    val fragment = BookmarkFragment()
-                    openFragment(fragment)
-                    true
-                }
-                else -> false
-            }
+            handleNavigation(item.itemId)
         }
-        // Set default selection
+
+        // Set default selection to "Home" screen
         if (savedInstanceState == null) {
-            bottomNavigationView.selectedItemId = R.id.nav_home
-            openFragment(HomeFragment())
+            bottomNavigationView.selectedItemId = R.id.nav_home // Set to "Home" screen
         }
-
-
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logout -> {
-                logout()
-                true
+    private fun handleNavigation(itemId: Int): Boolean {
+        when (itemId) {
+            R.id.nav_scan -> {
+                navigateToScan()
+                return true
             }
-            else -> super.onOptionsItemSelected(item)
+            R.id.nav_bookmark -> {
+                navigateToBookmark()
+                return true
+            }
+            else -> return false
         }
+    }
+
+    private fun navigateToScan() {
+        startActivity(Intent(this, ScanActivity::class.java))
+    }
+
+    private fun navigateToBookmark() {
+        startActivity(Intent(this, BookmarkActivity::class.java))
     }
 
     private fun logout() {
@@ -92,33 +74,5 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-    private fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        val fragmentManager = supportFragmentManager
-        if (fragmentManager.backStackEntryCount > 1) {
-            fragmentManager.popBackStack()
-            val currentFragment = fragmentManager.fragments.last()
-            updateBottomNavigation(currentFragment)
-        } else {
-            finish()
-        }
-    }
-
-    private fun updateBottomNavigation(fragment: Fragment) {
-        when (fragment) {
-            is HomeFragment -> bottomNavigationView.selectedItemId = R.id.nav_home
-            is ScanFragment -> bottomNavigationView.selectedItemId = R.id.nav_scan
-            is BookmarkFragment -> bottomNavigationView.selectedItemId = R.id.nav_bookmark
-        }
-    }
-
-
 }
+
