@@ -1,12 +1,14 @@
-package com.bangkit.rechef
+package com.bangkit.rechef.ui
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.rechef.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 
@@ -35,6 +37,14 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please fill out all the fields.", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val loginTextView: TextView = findViewById(R.id.sign_in)
+
+        loginTextView.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

@@ -54,4 +54,11 @@ dependencies {
     // import firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
+
+
+    implementation(libs.androidx.appcompat.v131)
+    implementation(libs.material)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.constraintlayout)
+
 }
