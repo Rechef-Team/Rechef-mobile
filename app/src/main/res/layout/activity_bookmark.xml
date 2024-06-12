@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/primary"
     android:background="@color/primary"
-    tools:context=".ui.BookmarkActivity">
+    tools:context=".ui.bookmark.BookmarkActivity">
 
     <TextView
         android:id="@+id/textView2"

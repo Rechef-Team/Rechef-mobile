@@ -1,18 +1,21 @@
-package com.bangkit.rechef.ui
+package com.bangkit.rechef.ui.bookmark
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rechef.R
+import com.bangkit.rechef.ui.main.MainActivity
+import com.bangkit.rechef.ui.scan.ScanActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ScanActivity : AppCompatActivity() {
+
+class BookmarkActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scan)
+        setContentView(R.layout.activity_bookmark)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
@@ -23,27 +26,27 @@ class ScanActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_scan -> {
+                    navigateToScan()
                     true
                 }
                 R.id.nav_bookmark -> {
-                    navigateToBookmark()
                     true
                 }
                 else -> false
             }
         }
         // Set the selected item to "Scan"
-        bottomNavigationView.selectedItemId = R.id.nav_scan
+        bottomNavigationView.selectedItemId = R.id.nav_bookmark
     }
 
     private fun navigateToHome() {
         startActivity(Intent(this, MainActivity::class.java))
-        finish() // Optional: Close the current activity to prevent it from being kept in the back stack
+        finish()
     }
 
-    private fun navigateToBookmark() {
-        startActivity(Intent(this, BookmarkActivity::class.java))
-        finish() // Optional: Close the current activity to prevent it from being kept in the back stack
+    private fun navigateToScan() {
+        startActivity(Intent(this, ScanActivity::class.java))
+        finish()
     }
 
     override fun onBackPressed() {

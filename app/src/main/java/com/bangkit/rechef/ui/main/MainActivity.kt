@@ -1,4 +1,4 @@
-package com.bangkit.rechef.ui
+package com.bangkit.rechef.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rechef.R
+import com.bangkit.rechef.ui.scan.ScanActivity
+import com.bangkit.rechef.ui.auth.SplashActivity
+import com.bangkit.rechef.ui.bookmark.BookmarkActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 

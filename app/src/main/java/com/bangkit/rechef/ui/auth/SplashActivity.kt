@@ -1,4 +1,4 @@
-package com.bangkit.rechef.ui
+package com.bangkit.rechef.ui.auth
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rechef.R
+import com.bangkit.rechef.ui.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/primary"
     android:background="@color/primary"
-    tools:context=".ui.ScanActivity">
+    tools:context=".ui.scan.ScanActivity">
 
     <TextView
         android:id="@+id/textView6"

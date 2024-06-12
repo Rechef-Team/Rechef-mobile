@@ -1,4 +1,4 @@
-package com.bangkit.rechef.ui
+package com.bangkit.rechef.ui.auth
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.rechef.R
+import com.bangkit.rechef.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 
