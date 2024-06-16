@@ -29,12 +29,5 @@ android:background="@color/primary">
     app:itemIconTint="@color/selector_bottom_nav"
     app:itemTextColor="@color/selector_bottom_nav"/>
 
-
-<Button
-    android:id="@+id/logoutButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/logout"
-    tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
