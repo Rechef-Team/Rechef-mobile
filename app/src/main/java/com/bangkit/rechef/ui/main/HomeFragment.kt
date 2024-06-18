@@ -11,10 +11,10 @@ import com.bangkit.rechef.R
 import com.bangkit.rechef.data.remote.RetrofitClient
 import com.bangkit.rechef.ui.Food
 import com.bangkit.rechef.ui.FoodAdapter
-import com.bangkit.rechef.ui.GridSpacing
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.bangkit.rechef.ui.utils.GridSpacing
 
 class HomeFragment : Fragment() {
 

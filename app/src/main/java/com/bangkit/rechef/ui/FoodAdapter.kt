@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 
 data class Food(val name: String, val image: String, val preparationTime: Int, val calories: Int)
 
-class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private var foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -45,7 +45,7 @@ class FoodAdapter(private val foodList: List<Food>) : RecyclerView.Adapter<FoodA
 
     class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val foodImage: ImageView = itemView.findViewById(R.id.imageView)
-        val foodName: TextView = itemView.findViewById(R.id.textView8)
+        val foodName: TextView = itemView.findViewById(R.id.foodTextView)
         val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
         val caloriesTextView: TextView = itemView.findViewById(R.id.caloriesTextView)
     }

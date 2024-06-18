@@ -3,16 +3,9 @@ package com.bangkit.rechef.ui.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rechef.R
-import com.bangkit.rechef.ui.Food
-import com.bangkit.rechef.ui.FoodAdapter
-import com.bangkit.rechef.ui.GridSpacing
 import com.bangkit.rechef.ui.auth.SplashActivity
 import com.bangkit.rechef.ui.bookmark.BookmarkFragment
 import com.bangkit.rechef.ui.scan.ScanFragment

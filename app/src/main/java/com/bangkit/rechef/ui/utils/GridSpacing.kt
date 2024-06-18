@@ -1,4 +1,4 @@
-package com.bangkit.rechef.ui
+package com.bangkit.rechef.ui.utils
 
 import android.graphics.Rect
 import android.view.View

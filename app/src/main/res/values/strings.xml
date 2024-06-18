@@ -29,4 +29,8 @@
     <string name="tv_forgot1">Trouble logging in?</string>
     <string name="tv_forgot2">Enter your email and we\'ll send you a link to get back into your account.</string>
     <string name="back_to_login">Back to Login</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload</string>
+    <string name="scan_text">Capture or Upload an Image</string>
 </resources>
