@@ -8,9 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rechef.R
+import com.bangkit.rechef.data.remote.RetrofitClient
 import com.bangkit.rechef.ui.Food
 import com.bangkit.rechef.ui.FoodAdapter
 import com.bangkit.rechef.ui.GridSpacing
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
@@ -30,9 +34,7 @@ class HomeFragment : Fragment() {
         logoutButton = view.findViewById(R.id.logoutButton)
         recyclerView = view.findViewById(R.id.recyclerView)
 
-
         logoutButton.setOnClickListener {
-            // Call logout function in MainActivity
             if (activity is MainActivity) {
                 (activity as MainActivity).logout()
             }
@@ -42,8 +44,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.addItemDecoration(GridSpacing(2, dpToPx(32), true))
 
-        val adapter = FoodAdapter(getFoodItems())
-        recyclerView.adapter = adapter
+        fetchFoodItems()
     }
 
     private fun dpToPx(dp: Int): Int {
@@ -51,17 +52,20 @@ class HomeFragment : Fragment() {
         return (dp * density).toInt()
     }
 
-    // This function simulates fetching the list of food items
-    private fun getFoodItems(): List<Food> {
-        return listOf(
-            Food("Corn Soup", R.drawable.ic_rechef, 30, 90),
-            Food("Fried Shrimp", R.drawable.ic_rechef, 30, 90),
-            Food("Corn Soup", R.drawable.ic_rechef, 30, 90),
-            Food("Fried Shrimp", R.drawable.ic_rechef, 30, 90),
-            Food("Corn Soup", R.drawable.ic_rechef, 30, 90),
-            Food("Fried Shrimp", R.drawable.ic_rechef, 30, 90),
-            Food("Corn Soup", R.drawable.ic_rechef, 30, 90),
-            Food("Fried Shrimp", R.drawable.ic_rechef, 30, 90),
-        )
+    private fun fetchFoodItems() {
+        RetrofitClient.instance.getFoodItems().enqueue(object : Callback<List<Food>> {
+            override fun onResponse(call: Call<List<Food>>, response: Response<List<Food>>) {
+                if (response.isSuccessful) {
+                    val foodItems = response.body() ?: emptyList()
+                    recyclerView.adapter = FoodAdapter(foodItems)
+                } else {
+                    // Handle the error
+                }
+            }
+
+            override fun onFailure(call: Call<List<Food>>, t: Throwable) {
+                // Handle the failure
+            }
+        })
     }
 }
