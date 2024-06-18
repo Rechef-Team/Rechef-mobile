@@ -54,6 +54,7 @@ dependencies {
     // import firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore)
 
 
     implementation(libs.androidx.appcompat.v131)

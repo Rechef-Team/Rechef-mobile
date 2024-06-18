@@ -12,16 +12,19 @@ import com.bangkit.rechef.R
 import com.bangkit.rechef.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         val emailEditText: EditText = findViewById(R.id.emailEditText)
         val usernameEditText: EditText = findViewById(R.id.usernameEditText)
@@ -64,7 +67,8 @@ class RegisterActivity : AppCompatActivity() {
                     user?.updateProfile(profileUpdates)
                         ?.addOnCompleteListener { profileTask ->
                             if (profileTask.isSuccessful) {
-                                Toast.makeText(baseContext, "Registration Successful.", Toast.LENGTH_SHORT).show()
+                                // Save user data to Firestore
+                                saveUserData(user.uid, email, username)
 
                                 // Save login state
                                 val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
@@ -83,6 +87,23 @@ class RegisterActivity : AppCompatActivity() {
                     // If registration fails, display a message to the user.
                     Toast.makeText(baseContext, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
+            }
+    }
+
+    private fun saveUserData(uid: String, email: String, username: String) {
+        val user = hashMapOf(
+            "uid" to uid,
+            "email" to email,
+            "username" to username
+        )
+
+        db.collection("users").document(uid)
+            .set(user)
+            .addOnSuccessListener {
+//                Toast.makeText(baseContext, "User data saved successfully.", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+//                Toast.makeText(baseContext, "Error saving user data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }

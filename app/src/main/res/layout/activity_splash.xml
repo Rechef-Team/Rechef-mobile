@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
-    android:background="@color/white">
+    android:backgroundTint="@color/splash_background"
+    android:background="@color/splash_background">
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:gravity="center"
@@ -19,12 +19,15 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
             android:contentDescription="@string/rechef_logo"
-            app:srcCompat="@drawable/ic_rechef" />
+            app:srcCompat="@drawable/ic_rechef"
+            app:shapeAppearanceOverlay="@style/LogoStyle" />
+
 
         <TextView
             android:id="@+id/rechef"
@@ -32,8 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/rechef"
-            android:textColor="@color/primary"
+            android:textColor="@color/splash_text"
             android:textSize="18sp"
+            android:layout_marginStart="12dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -48,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25"
-        app:srcCompat="@drawable/splash1" />
+        app:srcCompat="@drawable/splash2" />
 
 
     <TextView
@@ -57,7 +61,7 @@
         android:layout_height="wrap_content"
         android:text="@string/Splash_1"
         android:textAlignment="center"
-        android:textColor="@color/primary"
+        android:textColor="@color/splash_text"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
@@ -70,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/Splash_2"
-        android:textColor="@color/primary"
+        android:textColor="@color/splash_text"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textView"
@@ -82,8 +86,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/splash_text"
         android:text="@string/login"
+        android:textColor="@color/splash_background"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -94,8 +99,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="@color/splash_text"
         android:text="@string/register"
+        android:textColor="@color/splash_background"
         app:layout_constraintEnd_toEndOf="@+id/loginButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/loginButton"
