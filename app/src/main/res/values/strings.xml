@@ -33,4 +33,7 @@
     <string name="gallery">Gallery</string>
     <string name="upload">Upload</string>
     <string name="scan_text">Capture or Upload an Image</string>
+    <string name="recipe">Recipe</string>
+    <string name="time">Time</string>
+    <string name="calories">Calories</string>
 </resources>

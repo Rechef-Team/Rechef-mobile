@@ -12,6 +12,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:elevation="16dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="@+id/cardView3"
         app:layout_constraintStart_toStartOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,9 +39,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="Food"
+                android:text="@string/recipe"
                 android:textColor="@color/primary"
                 android:textSize="14sp"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -58,13 +60,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/time"
                     android:src="@drawable/ic_time" />
 
                 <TextView
                     android:id="@+id/timeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time"
+                    android:text="@string/time"
                     android:textColor="@color/primary"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -82,13 +85,14 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/calories"
                     android:src="@drawable/ic_chart" />
 
                 <TextView
                     android:id="@+id/caloriesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Calories"
+                    android:text="@string/calories"
                     android:textColor="@color/primary"
                     android:textSize="11sp" />
             </LinearLayout>

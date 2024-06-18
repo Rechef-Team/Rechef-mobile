@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.rechef.R
+import com.bangkit.rechef.data.response.RecipesItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -15,7 +16,7 @@ import com.bumptech.glide.request.RequestOptions
 
 data class Food(val name: String, val image: String, val preparationTime: Int, val calories: Int)
 
-class FoodAdapter(private var foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private var foodList: List<RecipesItem>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -33,12 +34,12 @@ class FoodAdapter(private var foodList: List<Food>) : RecyclerView.Adapter<FoodA
 
         holder.foodName.text = food.name
         Glide.with(holder.itemView.context)
-            .load(testImageUrl)
+            .load(food.image)
             .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(15)))
             .into(holder.foodImage)
 
         holder.timeTextView.text = "${food.preparationTime} Min"
-        holder.caloriesTextView.text = "${food.calories}    kcal"
+        holder.caloriesTextView.text = "${Math.round(food.calories)} kcal"
     }
 
     override fun getItemCount() = foodList.size
