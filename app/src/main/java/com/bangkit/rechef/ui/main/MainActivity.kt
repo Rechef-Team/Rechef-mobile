@@ -47,11 +47,15 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.container, fragment)
-            .commit()
+    private fun loadFragment(fragment: Fragment, addToBackStack: Boolean = false) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+
+        if (addToBackStack) {
+            transaction.addToBackStack(null)  // Add this line to add the fragment to the back stack
+        }
+
+        transaction.commit()
     }
 
     private fun handleNavigation(itemId: Int): Boolean {
@@ -61,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.nav_scan -> {
-                loadFragment(ScanFragment())
+                loadFragment(ScanFragment(), true)
                 true
             }
             R.id.nav_bookmark -> {

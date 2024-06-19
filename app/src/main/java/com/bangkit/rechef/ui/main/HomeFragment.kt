@@ -54,7 +54,6 @@ class HomeFragment : Fragment() {
             dialog.show()
         }
 
-
         setupRecyclerView()
         setupSearch()
 

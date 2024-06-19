@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.bangkit.rechef.R
 import com.bangkit.rechef.databinding.FragmentScanBinding
 import com.bangkit.rechef.ui.main.MainActivity
 import com.bangkit.rechef.ui.utils.getImageUri
@@ -21,10 +24,7 @@ class ScanFragment : Fragment() {
 
     private lateinit var binding: FragmentScanBinding
     private var currentImageUri: Uri? = null
-
-    companion object {
-        private const val REQUEST_LOCATION_PERMISSION = 1
-    }
+    private val viewModel: ScanViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +50,16 @@ class ScanFragment : Fragment() {
         binding.uploadButton.setOnClickListener {
             uploadPhoto()
         }
+
+        viewModel.predictionResponse.observe(viewLifecycleOwner, Observer { response ->
+            val className = response.className
+            Toast.makeText(requireContext(), "Class name: ${response.className}", Toast.LENGTH_SHORT).show()
+            navigateToRecipeFragment(className)
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun startGallery() {
@@ -92,15 +102,20 @@ class ScanFragment : Fragment() {
     private fun uploadPhoto() {
         currentImageUri?.let { uri ->
             val file = uriToFile(uri, requireContext()).reduceFileImage()
-
-            // Simulate upload process
-            Toast.makeText(requireContext(), "Image uploaded!", Toast.LENGTH_SHORT).show()
-
-            // Reset UI or navigate to another screen
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-            startActivity(intent)
-            requireActivity().finish()
+            viewModel.uploadImage(file)
         }
+    }
+
+    private fun navigateToRecipeFragment(className: String) {
+        val bundle = Bundle().apply {
+            putString("className", className)
+        }
+        val fragment = RecipeFragment().apply {
+            arguments = bundle
+        }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

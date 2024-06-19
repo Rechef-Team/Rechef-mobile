@@ -40,13 +40,14 @@
                 android:id="@+id/foodTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:paddingHorizontal="4dp"
                 android:fontFamily="@font/concert_one"
                 android:gravity="center"
                 android:text="@string/recipe"
                 android:textColor="@color/tertiary"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.7"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/lineView"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/lineView"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -82,19 +84,20 @@
                 android:id="@+id/lineView"
                 android:layout_width="1dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="20dp"
                 android:alpha="0.3"
                 android:background="@color/tertiary"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodTextView" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:alpha="0.7"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/lineView"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/lineView">
 
@@ -104,7 +107,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/calories"
                     android:src="@drawable/ic_chart"
-                    app:tint="@color/tertiary"/>
+                    app:tint="@color/tertiary" />
 
                 <TextView
                     android:id="@+id/caloriesTextView"
