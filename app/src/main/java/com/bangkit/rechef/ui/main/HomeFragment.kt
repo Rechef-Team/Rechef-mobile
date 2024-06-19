@@ -1,32 +1,19 @@
 package com.bangkit.rechef.ui.main
 
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.rechef.R
-import com.bangkit.rechef.data.remote.ApiConfig
-import com.bangkit.rechef.data.remote.RetrofitClient
-import com.bangkit.rechef.data.response.FoodResponse
 import com.bangkit.rechef.databinding.FragmentHomeBinding
-import com.bangkit.rechef.ui.Food
 import com.bangkit.rechef.ui.FoodAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import com.bangkit.rechef.ui.utils.GridSpacing
-import com.google.android.material.search.SearchBar
-import com.google.android.material.search.SearchView
 
 class HomeFragment : Fragment() {
 
@@ -51,10 +38,22 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.logoutButton.setOnClickListener {
-            if (activity is MainActivity) {
-                (activity as MainActivity).logout()
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Logout")
+            builder.setMessage("Are you sure you want to logout?")
+            builder.setPositiveButton("Yes") { dialog, which ->
+                // User clicked Yes button, logout
+                if (activity is MainActivity) {
+                    (activity as MainActivity).logout()
+                }
             }
+            builder.setNegativeButton("No") { dialog, which ->
+                // User clicked No button, do nothing
+            }
+            val dialog = builder.create()
+            dialog.show()
         }
+
 
         setupRecyclerView()
         setupSearch()
