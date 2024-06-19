@@ -10,6 +10,6 @@
         android:title="@string/scan"/>
     <item
         android:id="@+id/nav_bookmark"
-        android:icon="@drawable/ic_bookmark"
+        android:icon="@drawable/ic_book"
         android:title="@string/bookmark"/>
 </menu>

@@ -12,7 +12,20 @@
           "package_name": "com.bangkit.rechef"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "269477327885-im0i2lk6juc8ale09k3qauvjoiqf6b3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bangkit.rechef",
+            "certificate_hash": "bd6cc9c8b0e09cac1ab3376c8a15c10b42bc2738"
+          }
+        },
+        {
+          "client_id": "269477327885-trp1krdrm139oh576r9uhp86j0rvi5ud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAdAYQgAp1BRcY3sCPtmSR7V_i_OQDqIMc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269477327885-trp1krdrm139oh576r9uhp86j0rvi5ud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
