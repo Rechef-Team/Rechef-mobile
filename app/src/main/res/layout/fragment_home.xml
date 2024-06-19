@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/eczar_medium"
         android:text="@string/find_your_food"
         android:textColor="@color/white"
         android:textSize="34sp"
-        android:textStyle="bold"
+        android:lineSpacingExtra="-20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

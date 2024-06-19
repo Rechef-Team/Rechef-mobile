@@ -41,11 +41,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/concert_one"
+                android:gravity="center"
                 android:text="@string/recipe"
                 android:textColor="@color/tertiary"
-                android:textStyle="bold"
                 android:textSize="14sp"
-                android:gravity="center"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -71,6 +72,7 @@
                     android:id="@+id/timeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/concert_one"
                     android:text="@string/time"
                     android:textColor="@color/tertiary"
                     android:textSize="11sp" />
@@ -108,6 +110,7 @@
                     android:id="@+id/caloriesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/concert_one"
                     android:text="@string/calories"
                     android:textColor="@color/tertiary"
                     android:textSize="11sp" />
