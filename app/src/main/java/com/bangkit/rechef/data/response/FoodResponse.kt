@@ -29,20 +29,20 @@ data class Page(
 data class RecipesItem(
 
 	@field:SerializedName("image")
-	val image: String,
+	val image: String? = null,
 
 	@field:SerializedName("name")
-	val name: String,
+	val name: String? = null,
 
 	@field:SerializedName("preparation_time")
-	val preparationTime: Int,
+	val preparationTime: Int? = null,
 
 	@field:SerializedName("ingredients")
-	val ingredients: List<String>,
+	val ingredients: List<String>? = null,
 
 	@field:SerializedName("calories")
-	val calories: Double,
+	val calories: Double? = null,
 
 	@field:SerializedName("url")
-	val url: String
+	val url: String? = null
 ) : Parcelable

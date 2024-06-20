@@ -60,28 +60,4 @@ class MainViewModel: ViewModel() {
             }
         })
     }
-
-    fun getDetail(recipe: String) {
-        _isLoading.value = true
-        val client = ApiConfig.getApiService().getRecipeDetail(recipe)
-
-        client.enqueue(object : Callback<RecipesItem> {
-            override fun onResponse(
-                call: Call<RecipesItem>,
-                response: Response<RecipesItem>
-            ) {
-                _isLoading.value = false
-                if (response.isSuccessful) {
-                    _foodDetail.value = response.body()
-                } else {
-                    Log.e(TAG, "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<RecipesItem>, t: Throwable) {
-                _isLoading.value = false
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
-    }
 }

@@ -19,11 +19,6 @@ interface ApiService {
         @Query("q") query: String
     ): Call<FoodResponse>
 
-    @GET("recipe/{id}")
-    fun getRecipeDetail(
-        @Path("id") id: String
-    ): Call<RecipesItem>
-
     @Multipart
     @POST("prediction")
     fun uploadImage(

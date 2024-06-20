@@ -44,7 +44,7 @@ class FoodAdapter(private val foodList: List<RecipesItem>) : RecyclerView.Adapte
 
         holder.foodName.text = food.name
         holder.timeTextView.text = "${food.preparationTime} Min"
-        holder.caloriesTextView.text = "${Math.round(food.calories)} kcal"
+        holder.caloriesTextView.text = "${Math.round(food.calories!!)} kcal"
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context

@@ -9,13 +9,28 @@
     android:background="@color/primary"
     tools:context=".ui.bookmark.BookmarkFragment">
 
+    <TextView
+        android:id="@+id/bookmarkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/eczar_medium"
+        android:text="@string/bookmark"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:lineSpacingExtra="-20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
         android:overScrollMode="never"
-        android:scrollbarSize="0dp"/>
+        android:scrollbarSize="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookmarkTextView" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -26,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

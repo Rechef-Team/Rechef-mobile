@@ -58,10 +58,10 @@ class DetailActivity : AppCompatActivity() {
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(500)))
                 .into(binding.imageView)
             binding.timeTextView.text = getString(R.string.time, food.preparationTime.toString())
-            binding.caloriesTextView.text = getString(R.string.calories, Math.round(food.calories).toString())
+            binding.caloriesTextView.text = getString(R.string.calories, Math.round(food.calories!!).toString())
 
             // Set ingredients as bulleted list using HTML
-            val ingredients = food.ingredients.joinToString("<br/> &bull; ")
+            val ingredients = food.ingredients?.joinToString("<br/> &bull; ")
             val formattedIngredients = "&bull; $ingredients"
             ingredientsTextView.text = Html.fromHtml(formattedIngredients, Html.FROM_HTML_MODE_COMPACT)
 
