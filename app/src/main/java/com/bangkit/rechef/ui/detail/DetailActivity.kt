@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -45,6 +46,7 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
 
+
         ingredientsTextView = findViewById(R.id.ingredientsTextView)
         urlTextView = findViewById(R.id.urlTextView)
 
@@ -75,11 +77,18 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
+        val backButton = findViewById<ImageView>(R.id.backButton)
+        backButton.setOnClickListener{
+            onBackPressed()
+        }
+
         // Initialize bookmark FAB
         val fabBookmark = findViewById<FloatingActionButton>(R.id.floatingActionButton)
 
         // Check if the recipe is already bookmarked and update FAB icon
-        checkBookmarkStatus()
+        if (food != null) {
+            checkBookmark(food)
+        }
 
         // Toggle bookmark on FAB click
         fabBookmark.setOnClickListener {
@@ -94,13 +103,23 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
-    private fun checkBookmarkStatus() {
-        // Implement logic to check if the current recipe is bookmarked by the user
-        // For now, let's assume it's not bookmarked
-        isBookmarked = false
-        updateBookmarkIcon()
+    private fun checkBookmark(food: RecipesItem) {
+        // Check if the current recipe is bookmarked by the user
+        firestore.collection("bookmarks")
+            .whereEqualTo("ownerId", auth.currentUser?.uid)
+            .whereEqualTo("name", food.name)
+            .get()
+            .addOnSuccessListener { documents ->
+                isBookmarked = !documents.isEmpty
+                updateBookmarkIcon()
+            }
+            .addOnFailureListener { e ->
+                Log.e(TAG, "Error checking bookmark", e)
+                Snackbar.make(binding.root, "Error checking bookmark", Snackbar.LENGTH_SHORT).show()
+            }
     }
 
     private fun updateBookmarkIcon() {
