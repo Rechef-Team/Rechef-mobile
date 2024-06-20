@@ -52,11 +52,11 @@ class ScanFragment : Fragment() {
         }
 
         viewModel.predictionResponse.observe(viewLifecycleOwner, Observer { response ->
-            val className = response.className
+            val ingredient = response.className
 
-            if(className != "Unknown"){
+            if(ingredient != "Unknown"){
                 Toast.makeText(requireContext(), "${response.className} detected", Toast.LENGTH_SHORT).show()
-                navigateToRecipeFragment(className)
+                navigateToRecipeFragment(ingredient)
             } else {
                 Toast.makeText(requireContext(), "No food ingredient detected", Toast.LENGTH_LONG).show()
                 hideImage()
@@ -125,9 +125,9 @@ class ScanFragment : Fragment() {
         val fragment = RecipeFragment().apply {
             arguments = bundle
         }
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment)
-            .addToBackStack(null)
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container, fragment) // Replace with your container ID
+            .addToBackStack(null) // Add to back stack
             .commit()
     }
 }

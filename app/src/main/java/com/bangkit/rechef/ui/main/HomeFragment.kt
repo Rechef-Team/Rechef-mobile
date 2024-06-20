@@ -106,7 +106,6 @@ class HomeFragment : Fragment() {
         super.onResume()
         val query = sharedPreferences.getString(SEARCH_QUERY_KEY, "rice")
         binding.searchView.setText(query)
-        viewModel.fetchRecipes(query ?: "rice")
     }
 
     override fun onDestroyView() {

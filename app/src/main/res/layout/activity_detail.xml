@@ -150,7 +150,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:text="@string/ingredients"
                 android:textSize="16sp"
-                android:padding="8dp"
+                android:paddingHorizontal="8dp"
                 android:textAppearance="?android:attr/textAppearanceListItem" />
 
             <TextView
@@ -168,9 +168,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/url"
                 android:textSize="16sp"
-                android:padding="8dp"/>
+                android:paddingHorizontal="8dp" />
 
         </LinearLayout>
 
