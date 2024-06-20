@@ -90,9 +90,6 @@ class RegisterActivity : AppCompatActivity() {
                     user?.updateProfile(profileUpdates)
                         ?.addOnCompleteListener { profileTask ->
                             if (profileTask.isSuccessful) {
-                                // Save user data to Firestore
-                                saveUserData(user.uid, email, username)
-
                                 // Save login state
                                 val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
                                 val editor = sharedPreferences.edit()
@@ -110,23 +107,6 @@ class RegisterActivity : AppCompatActivity() {
                     // If registration fails, display a message to the user.
                     Toast.makeText(baseContext, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
-            }
-    }
-
-    private fun saveUserData(uid: String, email: String, username: String) {
-        val user = hashMapOf(
-            "uid" to uid,
-            "email" to email,
-            "username" to username
-        )
-
-        db.collection("users").document(uid)
-            .set(user)
-            .addOnSuccessListener {
-//                Toast.makeText(baseContext, "User data saved successfully.", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener { e ->
-//                Toast.makeText(baseContext, "Error saving user data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -157,7 +137,6 @@ class RegisterActivity : AppCompatActivity() {
                         // Save user data to Firestore
                         val email = user?.email ?: ""
                         val username = user?.displayName ?: ""
-                        saveUserData(user?.uid ?: "", email, username)
                     }
 
                     // Save login state

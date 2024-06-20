@@ -41,4 +41,5 @@
     <string name="recipes_result">%1$s Based Recipes</string>
     <string name="ingredients">Ingredients</string>
     <string name="url">Recipe URL</string>
+    <string name="fab">FAB</string>
 </resources>

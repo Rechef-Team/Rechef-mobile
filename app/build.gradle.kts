@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.google.firebase.auth)
     implementation(libs.play.services.auth)
+    implementation (libs.com.firebaseui.firebase.ui.auth)
 
     implementation(libs.androidx.appcompat.v131)
     implementation(libs.material)

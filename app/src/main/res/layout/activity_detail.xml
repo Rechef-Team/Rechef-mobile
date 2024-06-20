@@ -8,17 +8,24 @@
     android:background="@color/primary"
     tools:context=".ui.detail.DetailActivity">
 
-    <ImageView
-        android:id="@+id/bookmarkButton"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_bookmark_no_fill"
-        android:text="@string/bookmark"
+        android:backgroundTint="@color/primary"
+        android:contentDescription="@string/fab"
+        android:outlineSpotShadowColor="@color/primary"
+        android:outlineAmbientShadowColor="@color/primary"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/recipeTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recipeTextView"
-        app:tint="@color/white"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/ic_bookmark_no_fill"
+        tools:targetApi="p" />
+
 
     <TextView
         android:id="@+id/recipeTextView"
@@ -29,7 +36,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/bookmarkButton"
+        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -196,4 +203,5 @@
         app:labelVisibilityMode="selected"
         app:itemIconTint="@color/selector_bottom_nav"
         app:itemTextColor="@color/selector_bottom_nav"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
