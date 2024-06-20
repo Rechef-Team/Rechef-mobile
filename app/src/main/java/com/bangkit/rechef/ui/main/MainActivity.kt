@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.bangkit.rechef.R
 import com.bangkit.rechef.ui.auth.LoginActivity
 import com.bangkit.rechef.ui.bookmark.BookmarkFragment
-import com.bangkit.rechef.ui.scan.RecipeFragment
 import com.bangkit.rechef.ui.scan.ScanFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -26,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        window.statusBarColor = getColor(R.color.primary)
         auth = FirebaseAuth.getInstance()
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)

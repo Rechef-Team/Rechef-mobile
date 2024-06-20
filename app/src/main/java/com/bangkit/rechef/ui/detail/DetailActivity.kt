@@ -5,8 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,8 +26,9 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityDetailBinding.inflate(layoutInflater)
+        window.statusBarColor = getColor(R.color.primary)
+
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -43,7 +44,7 @@ class DetailActivity : AppCompatActivity() {
             binding.recipeTextView.text = food.name
             Glide.with(this)
                 .load(food.image)
-                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(15)))
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(500)))
                 .into(binding.imageView)
             binding.timeTextView.text = getString(R.string.time, food.preparationTime.toString())
             binding.caloriesTextView.text = getString(R.string.calories, Math.round(food.calories).toString())
@@ -63,6 +64,11 @@ class DetailActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+        }
+
+        val backButton: ImageView = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            finish() // Close the current activity and return to the previous one
         }
     }
 }
