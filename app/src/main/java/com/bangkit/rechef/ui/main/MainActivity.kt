@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bangkit.rechef.R
-import com.bangkit.rechef.ui.auth.LoginActivity
+import com.bangkit.rechef.ui.auth.SplashActivity
 import com.bangkit.rechef.ui.bookmark.BookmarkFragment
 import com.bangkit.rechef.ui.scan.ScanFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -90,9 +90,10 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
 
             // Redirect to LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, SplashActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
+
 }

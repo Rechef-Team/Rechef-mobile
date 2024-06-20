@@ -60,7 +60,8 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toStartOf="@+id/lineView"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout4">
 
                 <ImageView
                     android:layout_width="20dp"
@@ -88,7 +89,8 @@
                 android:background="@color/tertiary"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
@@ -99,7 +101,8 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/lineView">
+                app:layout_constraintStart_toEndOf="@+id/lineView"
+                app:layout_constraintTop_toBottomOf="@+id/foodTextView">
 
                 <ImageView
                     android:layout_width="20dp"
