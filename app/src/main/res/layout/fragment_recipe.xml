@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:gravity="center"
         android:fontFamily="@font/eczar_medium"
         android:lineSpacingExtra="-20dp"
         android:text="@string/recipes_result"

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -59,7 +60,6 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.google.firebase.auth)
     implementation(libs.play.services.auth)
-
 
     implementation(libs.androidx.appcompat.v131)
     implementation(libs.material)

@@ -53,8 +53,14 @@ class ScanFragment : Fragment() {
 
         viewModel.predictionResponse.observe(viewLifecycleOwner, Observer { response ->
             val className = response.className
-            Toast.makeText(requireContext(), "Class name: ${response.className}", Toast.LENGTH_SHORT).show()
-            navigateToRecipeFragment(className)
+
+            if(className != "Unknown"){
+                Toast.makeText(requireContext(), "${response.className} detected", Toast.LENGTH_SHORT).show()
+                navigateToRecipeFragment(className)
+            } else {
+                Toast.makeText(requireContext(), "No food ingredient detected", Toast.LENGTH_LONG).show()
+                hideImage()
+            }
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
@@ -97,6 +103,12 @@ class ScanFragment : Fragment() {
             binding.scanText.visibility = View.GONE
             binding.uploadButton.visibility = View.VISIBLE
         }
+    }
+
+    private fun hideImage() {
+        binding.imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_rechef_nofill, null))
+        binding.scanText.visibility = View.VISIBLE
+        binding.uploadButton.visibility = View.GONE
     }
 
     private fun uploadPhoto() {

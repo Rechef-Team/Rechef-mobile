@@ -1,6 +1,8 @@
 package com.bangkit.rechef.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class FoodResponse(
 
@@ -23,6 +25,7 @@ data class Page(
 	val to: Int
 )
 
+@Parcelize
 data class RecipesItem(
 
 	@field:SerializedName("image")
@@ -42,4 +45,4 @@ data class RecipesItem(
 
 	@field:SerializedName("url")
 	val url: String
-)
+) : Parcelable
