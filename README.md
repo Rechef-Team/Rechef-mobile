@@ -8,7 +8,7 @@ Our mission is to help you minimize food waste, discover new recipes, and make c
 
 ## Features
 - **User Authentication:** Login and Register
-<img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/1.jpg?raw=true" alt="1" width="auto" height="200"><br>
+<br><img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/1.jpg?raw=true" alt="1" width="auto" height="500"><br>
 
 - **Recipe Search:** Find and explore a variety of food recipes
 <img alt="2" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/2.jpg?raw=true"><br>
@@ -46,11 +46,12 @@ To build the Rechef application from source, follow these steps:
 2. **Open the project in Android Studio.**
 3. **Sync the project with Gradle files.**
 4. **Generate the google-services.json file**:
-   1. Go to the Firebase Console.
-   2. Click on Add project and follow the instructions to create a new project.
-   3. Once your project is created, click on Add app and select Android.
-   4. Register your app with your package name (e.g., com.bangkit.rechef).
-   5.Download the google-services.json file provided and place it in the app directory of your project.
+- Go to the Firebase Console.
+- Click on Add project and follow the instructions to create a new project.
+- Once your project is created, click on Add app and select Android.
+- Register your app with your package name (e.g., com.bangkit.rechef).
+- Download the google-services.json file provided and place it in the app directory of your project.
+
 5. **Build and run the project on an emulator or physical device.**
 
 ## Dependencies
