@@ -11,13 +11,13 @@ Our mission is to help you minimize food waste, discover new recipes, and make c
 <br><img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/1.jpg?raw=true" alt="1" width="auto" height="500"><br>
 
 - **Recipe Search:** Find and explore a variety of food recipes
-<img alt="2" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/2.jpg?raw=true"><br>
+<br><img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/2.jpg?raw=true" alt="2" width="auto" height="500"><br>
 
 - **Recipe Details:** View detailed information about each recipe
-<img alt="3" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/3.jpg?raw=true"><br>
+<br><img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/3.jpg?raw=true" alt="3" width="auto" height="500"><br>
 
 - **Home Screen:** Browse featured recipes
-<img alt="4" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/4.jpg?raw=true"><br>
+<br><img src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/4.jpg?raw=true" alt="4" width="auto" height="500"><br>
 
 ## Getting Started 📱
 
@@ -46,11 +46,11 @@ To build the Rechef application from source, follow these steps:
 2. **Open the project in Android Studio.**
 3. **Sync the project with Gradle files.**
 4. **Generate the google-services.json file**:
-- Go to the Firebase Console.
-- Click on Add project and follow the instructions to create a new project.
-- Once your project is created, click on Add app and select Android.
-- Register your app with your package name (e.g., com.bangkit.rechef).
-- Download the google-services.json file provided and place it in the app directory of your project.
+   - Go to the Firebase Console.
+   - Click on Add project and follow the instructions to create a new project.
+   - Once your project is created, click on Add app and select Android.
+   - Register your app with your package name (e.g., com.bangkit.rechef).
+   - Download the google-services.json file provided and place it in the app directory of your project.
 
 5. **Build and run the project on an emulator or physical device.**
 
