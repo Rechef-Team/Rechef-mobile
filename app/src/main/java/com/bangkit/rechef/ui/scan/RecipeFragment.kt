@@ -52,6 +52,15 @@ class RecipeFragment: Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    parentFragmentManager.popBackStack("ScanToRecipe", 0)
+                }
+            }
+        )
     }
 
     private fun setupRecyclerView() {

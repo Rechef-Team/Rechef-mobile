@@ -26,16 +26,19 @@ class MainViewModel: ViewModel() {
     private val _hasResult = MutableLiveData<Boolean>()
     val hasResult: LiveData<Boolean> = _hasResult
 
+    private var lastQuery: String? = null
+
     companion object {
         private const val TAG = "MainViewModel"
-        private const val FOOD = "rice"
-    }
-
-    init {
-        fetchRecipes(FOOD)
     }
 
     fun fetchRecipes(food: String) {
+        if (food == lastQuery && !_food.value.isNullOrEmpty()) {
+            // Data for this query is already loaded, do not refetch
+            _isLoading.value = false
+            return
+        }
+
         _isLoading.value = true
         val client = ApiConfig.getApiService().getFoodRecipes(food)
 
@@ -49,6 +52,7 @@ class MainViewModel: ViewModel() {
                     _food.value = response.body()?.recipes
                     val items = response.body()?.recipes ?: emptyList()
                     _hasResult.value = items.isNotEmpty()
+                    lastQuery = food
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }

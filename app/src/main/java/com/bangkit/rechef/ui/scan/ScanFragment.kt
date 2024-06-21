@@ -127,7 +127,7 @@ class ScanFragment : Fragment() {
         }
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment) // Replace with your container ID
-            .addToBackStack(null) // Add to back stack
+            .addToBackStack("ScanToRecipe") // Add to back stack
             .commit()
     }
 }

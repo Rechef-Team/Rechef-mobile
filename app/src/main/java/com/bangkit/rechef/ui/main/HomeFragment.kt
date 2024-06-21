@@ -4,6 +4,8 @@ package com.bangkit.rechef.ui.main
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
+    private var listState: Parcelable? = null
 
     private val PREFS_NAME = "com.bangkit.rechef.ui.main"
     private val SEARCH_QUERY_KEY = "search_query"
@@ -66,7 +69,10 @@ class HomeFragment : Fragment() {
         }
 
         // Fetch initial food items
-        viewModel.fetchRecipes("rice") // Default search
+        if (viewModel.food.value.isNullOrEmpty()) {
+            val query = sharedPreferences.getString(SEARCH_QUERY_KEY, "rice")
+            query?.let { viewModel.fetchRecipes(it) }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -97,15 +103,28 @@ class HomeFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
+        listState = binding.recyclerView.layoutManager?.onSaveInstanceState()
         val editor = sharedPreferences.edit()
         editor.putString(SEARCH_QUERY_KEY, binding.searchView.text.toString())
         editor.apply()
+        Log.d("HomeFragment", "onPause: ${binding.searchView.text}")
     }
 
     override fun onResume() {
         super.onResume()
         val query = sharedPreferences.getString(SEARCH_QUERY_KEY, "rice")
         binding.searchView.setText(query)
+        Log.d("HomeFragment", "onResume: $query")
+
+        if (viewModel.food.value.isNullOrEmpty()) {
+            query?.let { viewModel.fetchRecipes(it) }
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+
+        listState?.let {
+            binding.recyclerView.layoutManager?.onRestoreInstanceState(it)
+        }
     }
 
     override fun onDestroyView() {
