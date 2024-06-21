@@ -17,6 +17,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("libs") {
+            library("circleimageview", "de.hdodenhof:circleimageview:3.1.0") // Or your desired version
+        }
+    }
 }
 
 rootProject.name = "Rechef"
