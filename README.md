@@ -1,5 +1,5 @@
 # Rechef
-<img alt="banner ternaku" src="https://github.com/Rechef-Team/.github/blob/main/profile/banner.png?raw=true"><br>
+<img alt="banner" src="https://github.com/Rechef-Team/.github/blob/main/profile/banner.png?raw=true"><br>
 ## Introduction
 
 Rechef is an innovative mobile application designed to transform the way you cook. By recognizing the ingredients you have in your kitchen, Rechef recommends delicious and tailored recipes that make the most out of what you already have.
@@ -8,17 +8,21 @@ Our mission is to help you minimize food waste, discover new recipes, and make c
 
 ## Features
 - **User Authentication:** Login and Register
-  
+<img alt="1" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/1.jpg?raw=true"><br>
+
 - **Recipe Search:** Find and explore a variety of food recipes
+<img alt="2" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/2.jpg?raw=true"><br>
 
 - **Recipe Details:** View detailed information about each recipe
+<img alt="3" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/3.jpg?raw=true"><br>
 
 - **Home Screen:** Browse featured recipes
+<img alt="4" src="https://github.com/Rechef-Team/.github/blob/main/mobile-preview/4.jpg?raw=true"><br>
 
 ## Getting Started 📱
 
 1. Make sure your phone's Android version is above Android Pie (9.0).
-2. Download the .apk file from this repository's release section, or using this [link](https://github.com/Rechef-Team/rechef-mobile/releases/tag/v1.0).
+2. Download the .apk file from this repository's release section, or using this [link](https://github.com/Rechef-Team/rechef-mobile/releases/download/v1.0/ReChef.1.0.apk).
 3. Once downloaded, locate the .apk file on your device.
 4. If prompted, enable installation from unknown sources in your device settings.
 5. Open the .apk file to install the Rechef application.
