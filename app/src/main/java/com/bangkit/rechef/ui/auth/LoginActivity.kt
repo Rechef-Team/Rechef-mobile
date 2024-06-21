@@ -30,7 +30,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         enableEdgeToEdge()
-
+        // Set the status bar color and icon color
+        setStatusBarColorAndIcons(R.color.splash_background, true)
 
         auth = FirebaseAuth.getInstance()
 
