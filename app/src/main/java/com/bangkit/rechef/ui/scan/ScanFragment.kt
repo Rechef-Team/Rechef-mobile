@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bangkit.rechef.R
+import com.bangkit.rechef.databinding.FragmentRecipeBinding
 import com.bangkit.rechef.databinding.FragmentScanBinding
 import com.bangkit.rechef.ui.main.MainActivity
 import com.bangkit.rechef.ui.utils.getImageUri
@@ -22,15 +23,18 @@ import com.bangkit.rechef.ui.utils.uriToFile
 
 class ScanFragment : Fragment() {
 
-    private lateinit var binding: FragmentScanBinding
+    private var _binding: FragmentScanBinding? = null
+    private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
     private val viewModel: ScanViewModel by viewModels()
+
+    private var isNavigatedToRecipe = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentScanBinding.inflate(inflater, container, false)
+        _binding = FragmentScanBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,16 +52,19 @@ class ScanFragment : Fragment() {
         }
 
         binding.uploadButton.setOnClickListener {
+            isNavigatedToRecipe = false
             uploadPhoto()
         }
 
         viewModel.predictionResponse.observe(viewLifecycleOwner, Observer { response ->
             val ingredient = response.className
 
-            if(ingredient != "Unknown"){
+            if(!isNavigatedToRecipe && ingredient != "Unknown"){
                 Toast.makeText(requireContext(), "${response.className} detected", Toast.LENGTH_SHORT).show()
                 navigateToRecipeFragment(ingredient)
-            } else {
+                isNavigatedToRecipe = true // Set flag to true after navigation
+                Log.d("Ingredient", "Ingredient detected: $ingredient")
+            } else if(ingredient == "Unknown") {
                 Toast.makeText(requireContext(), "No food ingredient detected", Toast.LENGTH_LONG).show()
                 hideImage()
             }
@@ -122,12 +129,29 @@ class ScanFragment : Fragment() {
         val bundle = Bundle().apply {
             putString("className", className)
         }
+
         val fragment = RecipeFragment().apply {
             arguments = bundle
         }
-        requireActivity().supportFragmentManager.beginTransaction()
+
+        parentFragmentManager.beginTransaction()
             .replace(R.id.container, fragment) // Replace with your container ID
             .addToBackStack("ScanToRecipe") // Add to back stack
             .commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val fragmentManager = requireActivity().supportFragmentManager
+        for (i in 0 until fragmentManager.backStackEntryCount) {
+            val entry = fragmentManager.getBackStackEntryAt(i)
+            Log.d("BackStack", "Fragment: ${entry.name}")
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

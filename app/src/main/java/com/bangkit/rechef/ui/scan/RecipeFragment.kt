@@ -1,6 +1,7 @@
 package com.bangkit.rechef.ui.scan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,6 +74,16 @@ class RecipeFragment: Fragment() {
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
         return (dp * density).toInt()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val fragmentManager = requireActivity().supportFragmentManager
+        for (i in 0 until fragmentManager.backStackEntryCount) {
+            val entry = fragmentManager.getBackStackEntryAt(i)
+            Log.d("BackStack", "Fragment: ${entry.name}")
+        }
     }
 
     override fun onDestroyView() {
